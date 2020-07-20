@@ -14,6 +14,11 @@
     <LaunchProvider>Standard Python launcher</LaunchProvider>
     <InterpreterArguments>-i</InterpreterArguments>
     <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <TestFramework>none</TestFramework>
+    <UnitTestPattern>test*.py</UnitTestPattern>
+    <UnitTestRootDirectory>.</UnitTestRootDirectory>
+    <InterpreterId>Global|PythonCore|3.7-32</InterpreterId>
+    <Environment>PYTHONHOME="C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86"</Environment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,6 +42,9 @@
       <Project>{28f6146f-9862-4c07-a931-f3de0a093bb7}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.7-32" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
