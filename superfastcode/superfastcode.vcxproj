@@ -88,12 +88,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%PYTHONPATH%\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%PYTHONPATH%\include;"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\include"</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>Py_LIMITED_API;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>%PYTHONPATH%\libs</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%PYTHONPATH%\libs;"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\libs"</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

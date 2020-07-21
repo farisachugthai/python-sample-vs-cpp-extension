@@ -1,4 +1,39 @@
-// #include <Python.h>
+/*
+=========================
+Building in Visual Studio
+=========================
+
+After going through the horrifically agitating process of correctly setting
+up the correct properties in Visual Studio, it's time to convert our Cpp
+modules to python extensions.
+
+.. note::
+
+	It's important to correctly set the additional include directories and
+	additional libs directories.
+	This is unintuitive as the default project for the solution is a .pyproj
+	which won't display the required properties to set. As a result, one must:
+
+	- Open the solution as standard.
+	- Ensure that the Solution Explorer is open and right click the superfastcode project.
+	- Either hit :kbd:`Alt+Enter` or Properties.
+		- Find ``Additional Includes`` and under the Linker find ``Additional Libs``
+		- Ensure that the correct python executable is pointed to. It must be 32 bit.
+		- Neither %PYTHONPATH% nor %PYTHONHOME% were set in my case so I hardcoded the paths
+
+Without doing so the entire project and as a result the entire solution won't build which was
+admittedly frustrating. Anyways!
+
+
+Convert the C++ projects to extensions for Python
+=================================================
+To make the C++ DLL into an extension for Python, you first modify the exported
+methods to interact with Python types. You then add a function that exports the
+module, along with definitions of the module's methods.
+
+*/
+
+#include <Python.h>
 #include <Windows.h>
 #include <cmath>
 

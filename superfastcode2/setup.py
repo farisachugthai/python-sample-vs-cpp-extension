@@ -1,6 +1,8 @@
 ﻿import os, sys
 
-from distutils.core import setup, Extension
+from setuptools import setup
+from setuptools.extension import Extension
+# from distutils.core import setup, Extension
 from distutils import sysconfig
 
 cpp_args = ['-std=c++11', '-stdlib=libc++', '-mmacosx-version-min=10.7']

@@ -1,4 +1,8 @@
-from distutils.core import setup, Extension
+#!/usr/bin/env python
+"""Build a Cpp extension."""
+from setuptools import setup
+from setuptools.extension import Extension
+# from distutils.core import setup, Extension
 
 
 sfc_module = Extension('superfastcode', sources=['module.cpp'])
