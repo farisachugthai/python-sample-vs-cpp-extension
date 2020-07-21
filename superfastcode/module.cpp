@@ -47,17 +47,20 @@ double cosh_impl(double x) {
 	return (1 + pow(e, (-2 * x))) / (2 * pow(e, -x));
 }
 
-double tanh_impl(double x) {
-	return sinh_impl(x) / cosh_impl(x);
-}
+// double tanh_impl(double x) {
+	// return sinh_impl(x) / cosh_impl(x);
+// }
 
-/*
-PyObject* tanh_impl(PyObject *, PyObject* o); {
+// Modify the tanh_impl method to accept and return Python types (a PyOjbect*,
+// that is):
+PyObject* tanh_impl(PyObject *, PyObject* o) {
 	double x = PyFloat_AsDouble(o);
 	double tanh_x = sinh_impl(x) / cosh_impl(x);
 	return PyFloat_FromDouble(tanh_x);
 }
 
+// Add a structure that defines how the C++ tanh_impl function is presented to
+// Python:
 static PyMethodDef superfastcode_methods[] = {
 	// The first property is the name exposed to Python, fast_tanh, the second is the C++
 	// function name that contains the implementation.
@@ -67,6 +70,15 @@ static PyMethodDef superfastcode_methods[] = {
 { nullptr, nullptr, 0, nullptr }
 };
 
+/*
+Add a structure that defines the module as you want to refer to it in your
+Python code, specifically when using the from...import statement. (Make this
+match the value in the project properties under Configuration Properties >
+General > Target Name.) In the following example, the "superfastcode" module
+name means you can use from superfastcode import fast_tanh in Python, because
+fast_tanh is defined within superfastcode_methods. (Filenames internal to the
+C++ project, like module.cpp, are inconsequential.)
+*/
 static PyModuleDef superfastcode_module = {
 	PyModuleDef_HEAD_INIT,
 	"superfastcode",                        // Module name to use with Python import statements
@@ -75,8 +87,17 @@ static PyModuleDef superfastcode_module = {
 	superfastcode_methods                   // Structure that defines the methods of the module
 };
 
+/*
+Add a method that Python calls when it loads the module, which must be named
+PyInit_<module-name>, where <module-name> exactly matches the C++ project's
+General > Target Name property (that is, it matches the filename of the .pyd
+built by the project).
+*/
 PyMODINIT_FUNC PyInit_superfastcode() {
 	return PyModule_Create(&superfastcode_module);
 }
 
-*/
+// Set the target configuration to Release and build the C++ project again to
+// verify your code.
+// I'm not gonna set it to release because something in this is configured
+// to only correct include python when set to debug so oh well.
